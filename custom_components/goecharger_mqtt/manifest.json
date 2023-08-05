@@ -1,0 +1,22 @@
+{
+  "domain": "pulsatrix_local_mqtt",
+  "name": "pulsatrix charger (MQTT)",
+  "codeowners": [
+    "@werthdavid"
+  ],
+  "integration_type": "device",
+  "config_flow": true,
+  "dependencies": ["mqtt"],
+  "documentation": "https://github.com/werthdavid/pulsatrix-local-mqtt",
+  "homekit": {},
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/werthdavid/pulsatrix-local-mqtt/issues",
+  "mqtt": [
+    "pulsatrix/secc/+/tx/status",
+    "pulsatrix/secc/+/meter/fiscal"
+  ],
+  "requirements": [],
+  "ssdp": [],
+  "version": "0.0.1",
+  "zeroconf": []
+}

@@ -1,0 +1,6 @@
+{
+  "name": "pulsatrix charger integration for Home Assistant using local MQTT",
+  "content_in_root": false,
+  "render_readme": true,
+  "homeassistant": "2022.12.0"
+}
