@@ -1,4 +1,4 @@
-"""The go-eCharger (MQTT) integration."""
+"""The pulsatrix (MQTT) integration."""
 from __future__ import annotations
 
 import logging
@@ -20,11 +20,7 @@ from .const import (
 
 PLATFORMS: list[str] = [
     "binary_sensor",
-    "button",
-    "number",
     "sensor",
-    "select",
-    "switch",
 ]
 
 _LOGGER = logging.getLogger(__name__)
@@ -39,7 +35,7 @@ SERVICE_SCHEMA_SET_CONFIG_KEY = vol.Schema(
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up go-eCharger (MQTT) from a config entry."""
+    """Set up pulsatrix (MQTT) from a config entry."""
     hass.data.setdefault(DOMAIN, {})
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 

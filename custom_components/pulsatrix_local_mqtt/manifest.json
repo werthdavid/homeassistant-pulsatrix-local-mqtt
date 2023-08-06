@@ -4,13 +4,13 @@
   "codeowners": [
     "@werthdavid"
   ],
-  "integration_type": "device",
   "config_flow": true,
   "dependencies": ["mqtt"],
-  "documentation": "https://github.com/werthdavid/pulsatrix-local-mqtt",
+  "documentation": "https://github.com/werthdavid/homeassistant-pulsatrix-local-mqtt",
   "homekit": {},
+  "integration_type": "device",
   "iot_class": "local_push",
-  "issue_tracker": "https://github.com/werthdavid/pulsatrix-local-mqtt/issues",
+  "issue_tracker": "https://github.com/werthdavid/homeassistant-pulsatrix-local-mqtt/issues",
   "mqtt": [
     "pulsatrix/secc/+/tx/status",
     "pulsatrix/secc/+/meter/fiscal"

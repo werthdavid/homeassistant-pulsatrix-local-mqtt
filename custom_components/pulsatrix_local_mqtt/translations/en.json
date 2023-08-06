@@ -20,5 +20,12 @@
                 }
             }
         }
+    },
+    "entity": {
+        "sensor": {
+            "i18n_state": {
+                "name": "pulsatrix State"
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-"""Config flow for go-eCharger (MQTT) integration."""
+"""Config flow for pulsatrix (MQTT) integration."""
 from __future__ import annotations
 
 import logging
@@ -12,25 +12,18 @@ from homeassistant.helpers import config_validation as cv
 import voluptuous as vol
 
 from .const import CONF_SERIAL_NUMBER, CONF_TOPIC_PREFIX, DEFAULT_TOPIC_PREFIX, DOMAIN
-
-try:
-    # < HA 2022.8.0
-    from homeassistant.components.mqtt import MqttServiceInfo
-except ImportError:
-    # >= HA 2022.8.0
-    from homeassistant.helpers.service_info.mqtt import MqttServiceInfo
+from homeassistant.helpers.service_info.mqtt import MqttServiceInfo
 
 _LOGGER = logging.getLogger(__name__)
 
-DEFAULT_NAME = "go-eCharger"
+DEFAULT_NAME = "pulsatrix charger"
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_SERIAL_NUMBER): vol.All(cv.string, vol.Length(min=6, max=6)),
+        vol.Required(CONF_SERIAL_NUMBER): vol.All(cv.string, vol.Length(min=12, max=12)),
         vol.Required(CONF_TOPIC_PREFIX, default=DEFAULT_TOPIC_PREFIX): cv.string,
     }
 )
-
 
 class PlaceholderHub:
     """Placeholder class to make tests pass.
@@ -63,7 +56,7 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
 
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for go-eCharger (MQTT)."""
+    """Handle a config flow for pulsatrix (MQTT)."""
 
     VERSION = 1
 
@@ -77,16 +70,13 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         subscribed_topic = discovery_info.subscribed_topic
 
         # Subscribed topic must be in sync with the manifest.json
-        assert subscribed_topic in ["/go-eCharger/+/var", "go-eCharger/+/var"]
+        assert subscribed_topic in ["pulsatrix/secc/+/tx/status", "pulsatrix/secc/+/meter/fiscal"]
 
-        # Example topic: /go-eCharger/072246/var
+        # Example topic: /pulsatrix/072246/var
         topic = discovery_info.topic
         (prefix, suffix) = subscribed_topic.split("+", 2)
         self._serial_number = topic.replace(prefix, "").replace(suffix, "")
         self._topic_prefix = prefix[:-1]
-
-        if not self._serial_number.isnumeric():
-            return self.async_abort(reason="invalid_discovery_info")
 
         await self.async_set_unique_id(self._serial_number)
         self._abort_if_unique_id_configured()

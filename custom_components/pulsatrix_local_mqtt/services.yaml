@@ -1,0 +1,11 @@
+set_config_key:
+  name: Set config key
+  description: Sets a config key to a provided value.
+  fields:
+    serial_number:
+      name: Serial number
+      description: The serial number of the pulsatrix controller.
+      example: 0F7E9A442C7B
+      required: true
+      selector:
+        text:

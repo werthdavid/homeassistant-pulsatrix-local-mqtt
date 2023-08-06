@@ -1,1 +1,1 @@
-"""Tests for the go-eCharger (MQTT) integration."""
+"""Tests for the pulsatrix (MQTT) integration."""

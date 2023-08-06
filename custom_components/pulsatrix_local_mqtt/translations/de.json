@@ -1,0 +1,31 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Controller ist bereits eingerichtet"
+        },
+        "flow_title": "{name}",
+        "error": {
+            "cannot_connect": "Verbindung fehlgeschlagen",
+            "unknown": "Unerwarteter Fehler"
+        },
+        "step": {
+            "discovery_confirm": {
+                "description": "Möchten Sie {name} einrichten?"
+            },
+            "user": {
+                "description": "Bitte die Seriennummer des Controllers eingeben",
+                "data": {
+                    "serial_number": "Seriennummer",
+                    "topic_prefix": "MQTT Basis-Topic"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "i18n_state": {
+                "name": "pulsatrix Status"
+            }
+        }
+    }
+}

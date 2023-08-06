@@ -1,4 +1,4 @@
-"""The go-eCharger (MQTT) binary sensor."""
+"""The pulsatrix (MQTT) binary sensor."""
 import logging
 
 from homeassistant import config_entries, core
@@ -8,9 +8,9 @@ from homeassistant.core import callback
 
 from .definitions.binary_sensor import (
     BINARY_SENSORS,
-    GoEChargerBinarySensorEntityDescription,
+    PxChargerBinarySensorEntityDescription,
 )
-from .entity import GoEChargerEntity
+from .entity import PxChargerEntity
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -22,21 +22,21 @@ async def async_setup_entry(
 ):
     """Config entry setup."""
     async_add_entities(
-        GoEChargerBinarySensor(config_entry, description)
+        PxChargerBinarySensor(config_entry, description)
         for description in BINARY_SENSORS
         if not description.disabled
     )
 
 
-class GoEChargerBinarySensor(GoEChargerEntity, BinarySensorEntity):
-    """Representation of a go-eCharger sensor that is updated via MQTT."""
+class PxChargerBinarySensor(PxChargerEntity, BinarySensorEntity):
+    """Representation of a pulsatrix sensor that is updated via MQTT."""
 
-    entity_description: GoEChargerBinarySensorEntityDescription
+    entity_description: PxChargerBinarySensorEntityDescription
 
     def __init__(
         self,
         config_entry: config_entries.ConfigEntry,
-        description: GoEChargerBinarySensorEntityDescription,
+        description: PxChargerBinarySensorEntityDescription,
     ) -> None:
         """Initialize the binary sensor."""
         self.entity_description = description

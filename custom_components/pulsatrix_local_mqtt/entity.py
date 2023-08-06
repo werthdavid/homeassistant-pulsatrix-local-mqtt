@@ -10,28 +10,26 @@ from .const import (
     DEVICE_INFO_MODEL,
     DOMAIN,
 )
-from .definitions import GoEChargerEntityDescription
+from .definitions import PxChargerEntityDescription
 
 
-class GoEChargerEntity(Entity):
-    """Common go-eCharger entity."""
+class PxChargerEntity(Entity):
+    """Common pulsatrix entity."""
 
     def __init__(
         self,
         config_entry: config_entries.ConfigEntry,
-        description: GoEChargerEntityDescription,
+        description: PxChargerEntityDescription,
     ) -> None:
         """Initialize the sensor."""
         topic_prefix = config_entry.data[CONF_TOPIC_PREFIX]
         serial_number = config_entry.data[CONF_SERIAL_NUMBER]
 
-        self._topic = f"{topic_prefix}/{serial_number}/{description.key}"
-
-        slug = slugify(self._topic.replace("/", "_"))
-        self.entity_id = f"{description.domain}.{slug}"
+        self._topic = f"{topic_prefix}/{serial_number}/{description.topic}"
+        self.entity_id = f"{description.domain}.pulsatrix_{serial_number}_{description.key}"
 
         self._attr_unique_id = "-".join(
-            [serial_number, description.domain, description.key, description.attribute]
+            [serial_number, description.domain, description.key]
         )
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, serial_number)},
