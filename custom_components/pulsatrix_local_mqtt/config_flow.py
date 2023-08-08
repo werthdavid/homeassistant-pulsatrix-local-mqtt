@@ -12,7 +12,13 @@ from homeassistant.helpers import config_validation as cv
 import voluptuous as vol
 
 from .const import CONF_SERIAL_NUMBER, CONF_TOPIC_PREFIX, DEFAULT_TOPIC_PREFIX, DOMAIN
-from homeassistant.helpers.service_info.mqtt import MqttServiceInfo
+
+try:
+    # < HA 2022.8.0
+    from homeassistant.components.mqtt import MqttServiceInfo
+except ImportError:
+    # >= HA 2022.8.0
+    from homeassistant.helpers.service_info.mqtt import MqttServiceInfo
 
 _LOGGER = logging.getLogger(__name__)
 

@@ -3,7 +3,7 @@ name: Tests
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - main
+      - master
   pull_request:
   schedule:
     - cron: "30 16 * * WED"
@@ -14,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: ["3.9", "3.10"]
+        python-version: ["3.11"]
 
     steps:
       - uses: actions/checkout@v1
