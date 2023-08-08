@@ -38,7 +38,13 @@ class PxChargerSensor(PxChargerEntity, SensorEntity):
         """Initialize the sensor."""
         super().__init__(config_entry, description)
 
+        self._extra_state_attributes = None
         self.entity_description = description
+
+    @property
+    def extra_state_attributes(self):
+        """Return entity specific state attributes."""
+        return self._extra_state_attributes
 
     @property
     def available(self):
@@ -61,6 +67,17 @@ class PxChargerSensor(PxChargerEntity, SensorEntity):
                 else:
                     self._attr_native_value = message.payload
 
+            if self.entity_description.raw_value is not None:
+                raw_value = self.entity_description.raw_value(
+                    message.payload, self.entity_description.attribute, self.entity_description.attribute_index
+                )
+                self._extra_state_attributes = {
+                    "raw_value": raw_value
+                }
+
             self.async_write_ha_state()
 
         await mqtt.async_subscribe(self.hass, self._topic, message_received, 1)
+
+
+

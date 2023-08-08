@@ -36,5 +36,6 @@ class PxChargerEntityDescription(EntityDescription):
     attribute_index: int = -1
     domain: str = "generic"
     topic: str = "tx/status"
+    raw_value: Callable | None = None
     disabled: bool | None = None
     disabled_reason: str | None = None

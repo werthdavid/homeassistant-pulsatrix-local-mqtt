@@ -107,6 +107,7 @@ SENSORS: tuple[PxChargerSensorEntityDescription, ...] = (
         topic="tx/status",
         name="pulsatrix State",
         state=transform_code,
+        raw_value=extract_json,
         attribute="state",
         device_class=None,
         translation_key="i18n_state",
