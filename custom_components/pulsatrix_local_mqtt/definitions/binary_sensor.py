@@ -30,6 +30,7 @@ BINARY_SENSORS: tuple[PxChargerBinarySensorEntityDescription, ...] = (
         key="charging",
         topic="tx/status",
         name="pulsatrix Charging",
+        initial_value=False,
         attribute="state",
         state=map_state_to_boolean,
         entity_category=EntityCategory.DIAGNOSTIC,

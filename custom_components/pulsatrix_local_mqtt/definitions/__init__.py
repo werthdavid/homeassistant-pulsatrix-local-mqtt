@@ -26,13 +26,13 @@ class PxChargerStatusCodes:
     }
 
 
-
 @dataclass
 class PxChargerEntityDescription(EntityDescription):
     """Generic entity description for pulsatrix."""
 
     state: Callable | None = None
     attribute: str = "0"
+    initial_value: bool | str | float | None = None
     attribute_index: int = -1
     domain: str = "generic"
     topic: str = "tx/status"

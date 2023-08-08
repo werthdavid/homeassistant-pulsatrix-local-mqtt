@@ -13,9 +13,9 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(
-    hass: core.HomeAssistant,
-    config_entry: config_entries.ConfigEntry,
-    async_add_entities,
+        hass: core.HomeAssistant,
+        config_entry: config_entries.ConfigEntry,
+        async_add_entities,
 ):
     """Config entry setup."""
     async_add_entities(
@@ -48,10 +48,15 @@ class PxChargerSensor(PxChargerEntity, SensorEntity):
 
     @property
     def available(self):
+        if self.entity_description.initial_value is not None:
+            return True
         """Return True if entity is available."""
         return self._attr_native_value is not None
 
     async def async_added_to_hass(self):
+        if self.entity_description.initial_value is not None:
+            self._attr_native_value = self.entity_description.initial_value
+
         """Subscribe to MQTT events."""
 
         @callback
@@ -78,6 +83,3 @@ class PxChargerSensor(PxChargerEntity, SensorEntity):
             self.async_write_ha_state()
 
         await mqtt.async_subscribe(self.hass, self._topic, message_received, 1)
-
-
-
