@@ -7,6 +7,7 @@ import logging
 
 from homeassistant.components.sensor import (
     STATE_CLASS_MEASUREMENT,
+    STATE_CLASS_TOTAL_INCREASING,
     SensorDeviceClass,
     SensorEntityDescription,
 )
@@ -14,7 +15,7 @@ from homeassistant.const import (
     ELECTRIC_CURRENT_AMPERE,
     ELECTRIC_POTENTIAL_VOLT,
     FREQUENCY_HERTZ,
-    POWER_KILO_WATT,
+    POWER_KILO_WATT, UnitOfEnergy,
 )
 from homeassistant.helpers.entity import EntityCategory
 
@@ -47,6 +48,13 @@ def extract_json_float_kilo(value, key, index) -> float | None:
             return round(float(json.loads(value)[key][index]) / 1000, 2)
         else:
             return round(float(json.loads(value)[key]) / 1000, 2)
+    except IndexError:
+        return None
+
+
+def extract_energy(value, key, index) -> float | None:
+    try:
+        return round(float(json.loads(value)["lastMeterValue"]) - float(json.loads(value)["meterStart"]), 2)
     except IndexError:
         return None
 
@@ -87,6 +95,20 @@ SENSORS: tuple[PxChargerSensorEntityDescription, ...] = (
         initial_value=0,
         device_class=SensorDeviceClass.POWER,
         native_unit_of_measurement=POWER_KILO_WATT,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        entity_registry_enabled_default=True,
+        disabled=False,
+    ),
+    PxChargerSensorEntityDescription(
+        key="energy",
+        topic="tx/status",
+        name="pulsatrix Energy",
+        state=extract_energy,
+        attribute="lastMeterValue",
+        initial_value=0,
+        device_class=SensorDeviceClass.ENERGY,
+        state_class=STATE_CLASS_TOTAL_INCREASING,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         entity_category=EntityCategory.DIAGNOSTIC,
         entity_registry_enabled_default=True,
         disabled=False,

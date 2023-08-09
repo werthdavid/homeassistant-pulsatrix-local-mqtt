@@ -38,18 +38,19 @@ Use the Web UI (Config flow) to add the "pulsatrix" integration. You have to kno
 
 ## Entities
 
-| Friendly name       | Category     | Type          | Enabled per default  | Description                             |
-|---------------------|--------------|---------------|----------------------|-----------------------------------------|
-| Charging            | `diagnostic` | binary sensor | :heavy_check_mark:   | Weather the EV is charging or not       |
-| Current Consumption | `diagnostic` | sensor        | :heavy_check_mark:   | The consumption in kW                   |
-| State               | `diagnostic` | sensor        | :heavy_check_mark:   | The state of the controller (see below) |
-| Frequency           | `diagnostic` | sensor        | :white_large_square: | The grid frequency                      |
-| P1 voltage          | `diagnostic` | sensor        | :white_large_square: | Phase 1 voltage                         |
-| P2 voltage          | `diagnostic` | sensor        | :white_large_square: | Phase 2 voltage                         |
-| P3 voltage          | `diagnostic` | sensor        | :white_large_square: | Phase 3 voltage                         |
-| P1 amperage         | `diagnostic` | sensor        | :white_large_square: | Phase 1 amperage                        |
-| P2 amperage         | `diagnostic` | sensor        | :white_large_square: | Phase 2 amperage                        |
-| P3 amperage         | `diagnostic` | sensor        | :white_large_square: | Phase 3 amperage                        |
+| Friendly name        | Category     | Type          | Enabled per default  | Description                                          |
+|----------------------|--------------|---------------|----------------------|------------------------------------------------------|
+| Charging             | `diagnostic` | binary sensor | :heavy_check_mark:   | Weather the EV is charging or not                    |
+| Current Consumption  | `diagnostic` | sensor        | :heavy_check_mark:   | The consumption in kW                                |
+| Energy               | `diagnostic` | sensor        | :heavy_check_mark:   | The transferred energy of the current session in kWh |
+| State                | `diagnostic` | sensor        | :heavy_check_mark:   | The state of the controller (see below)              |
+| Frequency            | `diagnostic` | sensor        | :white_large_square: | The grid frequency                                   |
+| P1 voltage           | `diagnostic` | sensor        | :white_large_square: | Phase 1 voltage                                      |
+| P2 voltage           | `diagnostic` | sensor        | :white_large_square: | Phase 2 voltage                                      |
+| P3 voltage           | `diagnostic` | sensor        | :white_large_square: | Phase 3 voltage                                      |
+| P1 amperage          | `diagnostic` | sensor        | :white_large_square: | Phase 1 amperage                                     |
+| P2 amperage          | `diagnostic` | sensor        | :white_large_square: | Phase 2 amperage                                     |
+| P3 amperage          | `diagnostic` | sensor        | :white_large_square: | Phase 3 amperage                                     |
 
 
 `diagnostic`: An entity exposing some configuration parameter or diagnostics of a device
