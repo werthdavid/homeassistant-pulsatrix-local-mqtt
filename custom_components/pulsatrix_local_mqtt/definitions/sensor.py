@@ -4,7 +4,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 import json
 import logging
-
+import pytz
+from datetime import datetime
 from homeassistant.components.sensor import (
     STATE_CLASS_MEASUREMENT,
     STATE_CLASS_TOTAL_INCREASING,
@@ -85,6 +86,13 @@ def transform_code(value, key, index) -> str:
         return "Definition missing for code %s" % value
 
 
+def map_state_to_datetime(value, key, index) -> str:
+    ts = int(json.loads(value)[key])
+    dt = datetime.utcfromtimestamp(ts)
+    timezone = pytz.UTC
+    return timezone.localize(dt).strftime("%d.%m.%Y %H:%M:%S")
+
+
 SENSORS: tuple[PxChargerSensorEntityDescription, ...] = (
     PxChargerSensorEntityDescription(
         key="current_consumption",
@@ -138,6 +146,18 @@ SENSORS: tuple[PxChargerSensorEntityDescription, ...] = (
         native_unit_of_measurement=None,
         state_class=None,
         icon="mdi:state-machine",
+        entity_registry_enabled_default=True,
+        disabled=False,
+    ),
+    PxChargerSensorEntityDescription(
+        key="started_time",
+        topic="tx/status",
+        name="pulsatrix Started Time",
+        attribute="startedTime",
+        state=map_state_to_datetime,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        device_class=None,
+        icon="mdi:car-clock",
         entity_registry_enabled_default=True,
         disabled=False,
     ),
