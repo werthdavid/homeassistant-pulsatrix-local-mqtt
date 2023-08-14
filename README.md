@@ -5,6 +5,7 @@
 ![GitHub actions](https://github.com/werthdavid/homeassistant-pulsatrix-local-mqtt/actions/workflows/pytest.yaml/badge.svg)
 ![GitHub actions](https://github.com/werthdavid/homeassistant-pulsatrix-local-mqtt/actions/workflows/hassfest.yaml/badge.svg)
 ![GitHub actions](https://github.com/werthdavid/homeassistant-pulsatrix-local-mqtt/actions/workflows/hacs.yaml/badge.svg)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/integration)
 [!["Buy Me A Coffee"](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/werthdavid)
 
 This is a custom component for Home Assistant to integrate the pulsatrix charger (v3) using the MQTT API (v2).
