@@ -10,6 +10,7 @@
 
 This is a custom component for Home Assistant to integrate the pulsatrix charger (v3) using the MQTT API (v2).
 
+:exclamation: **This is an unofficial plugin that is not officially supported by pulsatrix**
 
 ## Installation
 
