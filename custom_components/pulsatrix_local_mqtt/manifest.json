@@ -13,10 +13,16 @@
   "issue_tracker": "https://github.com/werthdavid/homeassistant-pulsatrix-local-mqtt/issues",
   "mqtt": [
     "pulsatrix/secc/+/tx/status",
-    "pulsatrix/secc/+/meter/fiscal"
+    "pulsatrix/secc/+/meter/fiscal",
+    "pulsatrix/secc/+/meter/grid",
+    "pulsatrix/secc/+/charging/status",
+    "pulsatrix/secc/+/chargingPoint/status",
+    "pulsatrix/secc/+/charging/amperageLimit",
+    "pulsatrix/secc/+/charging/powerLimit",
+    "pulsatrix/secc/+/charging/limitTimeout"
   ],
   "requirements": [],
   "ssdp": [],
-  "version": "0.0.1",
+  "version": "0.2.0",
   "zeroconf": []
 }

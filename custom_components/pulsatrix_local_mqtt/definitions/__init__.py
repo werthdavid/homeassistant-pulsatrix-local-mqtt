@@ -22,7 +22,74 @@ class PxChargerStatusCodes:
         "FAILED": "Failed",
         "STOPPED": "Stopped externally",
         "LINGERING": "Wait for EV to reconnect",
-        "COMPLETE": "Completed"
+        "COMPLETE": "Completed",
+        "COMPLETED": "Completed"
+    }
+
+    connector_status = {
+        "Available": "Available",
+        "Occupied": "Occupied",
+        "Reserved": "Reserved",
+        "Unavailable": "Unavailable",
+        "Faulted": "Faulted"
+    }
+
+    charge_controller_status = {
+        "A1": "Standby",
+        "B1": "Vehicle detected",
+        "C1": "Charge request",
+        "D1": "Charge & vent request",
+        "E1": "Shut off",
+        "F1": "Error",
+        "S1": "Restart after error",
+        "R1": "Diode fail",
+        "B2": "Charging offered",
+        "C2": "Charging",
+        "D2": "Charging + venting"
+    }
+
+    vehicle_status = {
+        "S": "Startup / unknown",
+        "A": "Disconnected",
+        "B": "Connected",
+        "C": "Charge request",
+        "D": "Charge & ventilation request",
+        "E": "Short circuit",
+        "F": "Error",
+        "R": "Diode fail"
+    }
+
+    start_reason = {
+        "Authorized": "Authorized",
+        "CablePluggedIn": "Cable plugged in",
+        "ChargingRateChanged": "Charging rate changed",
+        "ChargingStateChanged": "Charging state changed",
+        "Deauthorized": "Deauthorized",
+        "EnergyLimitReached": "Energy limit reached",
+        "EVCommunicationLost": "EV communication lost",
+        "EVConnectTimeout": "EV connect timeout",
+        "MeterValueClock": "Meter value clock",
+        "MeterValuePeriodic": "Meter value periodic",
+        "TimeLimitReached": "Time limit reached",
+        "Trigger": "Triggered by CSMS",
+        "UnlockCommand": "Unlock command",
+        "StopAuthorized": "Stop authorized",
+        "EVDeparted": "EV departed",
+        "EVDetected": "EV detected",
+        "RemoteStop": "Remote stop",
+        "RemoteStart": "Remote start",
+        "AbnormalCondition": "Abnormal condition",
+        "SignedDataReceived": "Signed data received",
+        "ResetCommand": "Reset command"
+    }
+
+    cp_error_cause = {
+        "EvDisconnect": "EV unexpectedly disconnected",
+        "EvNotStopping": "EV does not stop when commanded",
+        "SignalledAmperageExceeded": "EV exceeds amperage limit",
+        "CpShortCircuit": "CP shorted",
+        "CpDiodeShortCircuit": "Diode shorted",
+        "VentilationNotAvailable": "Ventilation not available"
     }
 
 

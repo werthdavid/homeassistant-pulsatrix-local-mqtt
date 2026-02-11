@@ -20,6 +20,7 @@ from .const import (
 
 PLATFORMS: list[str] = [
     "binary_sensor",
+    "number",
     "sensor",
 ]
 

@@ -25,6 +25,15 @@
         "sensor": {
             "i18n_state": {
                 "name": "pulsatrix Status"
+            },
+            "i18n_connector_status": {
+                "name": "pulsatrix Anschluss-Status"
+            },
+            "i18n_charge_controller_status": {
+                "name": "pulsatrix Laderegler-Status"
+            },
+            "i18n_vehicle_status": {
+                "name": "pulsatrix Fahrzeug-Status"
             }
         }
     }
